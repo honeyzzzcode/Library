@@ -3,7 +3,7 @@ package library;
 
 
 public class User {
-    String studentName;
+    String userName;
     String regNum;
 
     Book borrowedBooks[] = new Book[3];
@@ -11,7 +11,7 @@ public class User {
 
     public User() {
 
-        this.studentName = Input.nextString("Enter Student Name:");
+        this.userName = Input.nextString("Enter User Name:");
         this.regNum = Input.nextString("Enter Reg Number:");
     }
 }

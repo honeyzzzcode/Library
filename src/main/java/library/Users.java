@@ -1,7 +1,7 @@
 package library;
 
 public class Users {
-    User theStudents[] = new User[50];
+    User users[] = new User[50];
 
 //books book;
 
@@ -12,9 +12,9 @@ public class Users {
 
         for (int i=0; i<count; i++){
 
-            if(s.regNum.equalsIgnoreCase(theStudents[i].regNum)){
+            if(s.regNum.equalsIgnoreCase(users[i].regNum)){
 
-                System.out.println("Student of Reg Num " + s.regNum + " is Already Registered.");
+                System.out.println("User of Reg Num " + s.regNum + " is Already Registered.");
                 return;
             }
 
@@ -22,7 +22,7 @@ public class Users {
 
         if (count<=50){
 
-            theStudents[count] = s;
+            users[count] = s;
             count++;
 
         }
@@ -30,17 +30,17 @@ public class Users {
     }
     public void showAllStudents(){
 
-        System.out.println("Student Name\t\tReg Number");
+        System.out.println("User Name\t\tReg Number");
         for (int i=0; i<count; i++){
 
-            System.out.println(theStudents[i].studentName + "\t\t" + theStudents[i].regNum);
+            System.out.println(users[i].userName + "\t\t" + users[i].regNum);
 
         }
 
 
     }
 
-    public int isStudent(){
+    public int isUser(){
         //return index number of student if available
         //System.out.println("Enter Student Name:");
         //String studentName = input.nextLine();
@@ -49,14 +49,14 @@ public class Users {
 
         for (int i=0; i<count; i++){
 
-            if (theStudents[i].regNum.equalsIgnoreCase(regNum)){
+            if (users[i].regNum.equalsIgnoreCase(regNum)){
 
                 return i;
 
             }
 
         }
-        System.out.println("Student is not Registered.");
+        System.out.println("User is not Registered.");
         System.out.println("Get Registered First.");
 
 
@@ -64,7 +64,7 @@ public class Users {
 
     }
     public void checkOutBook(Books book){
-        int studentIndex =this.isStudent();
+        int studentIndex =this.isUser();
 
         if (studentIndex!=-1){
             System.out.println("checking out");
@@ -74,16 +74,16 @@ public class Users {
             System.out.println("checking out");
             if (b!= null){
 
-                if (theStudents[studentIndex].booksCount<=3){
+                if (users[studentIndex].booksCount<=3){
                     System.out.println("adding book");
-                    theStudents[studentIndex].borrowedBooks[theStudents[studentIndex].booksCount] = b;
-                    theStudents[studentIndex].booksCount++;
+                    users[studentIndex].borrowedBooks[users[studentIndex].booksCount] = b;
+                    users[studentIndex].booksCount++;
                     return;
 
                 }
                 else {
 
-                    System.out.println("Student Can not Borrow more than 3 Books.");
+                    System.out.println("User Can not Borrow more than 3 Books.");
                     return;
 
                 }
@@ -96,10 +96,10 @@ public class Users {
 
     public void checkInBook(Books book){
 
-        int studentIndex = this.isStudent();
-        if (studentIndex != -1){
+        int userIndex = this.isUser();
+        if (userIndex != -1){
             System.out.println("S.No\t\t\tBook Name\t\t\tAuthor Name");
-            User s = theStudents[studentIndex];
+            User s = users[userIndex];
             for (int i=0; i<s.booksCount; i++){
 
                 System.out.println(s.borrowedBooks[i].sNo+ "\t\t\t" + s.borrowedBooks[i].bookName + "\t\t\t"+
